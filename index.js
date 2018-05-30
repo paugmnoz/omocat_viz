@@ -1,14 +1,36 @@
-var width = 960,
-    height = 500,
-    active = d3.select(null);
+const width = 1400;
+const height = 500;
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
+function draw( points ) {
 
-svg.append("rect")
-    .attr("class", "background")
-    .attr("width", width)
-    .attr("height", height);
+  ctx.save();
+  ctx.clearRect( 0, 0, width, height );
+  for (let i = 0; i < points.length; ++i) {
+    const point = points[i];
+    const radius = 2;
+    ctx.beginPath();
+    ctx.arc( point[0] + Math.random() * 4, point[1] + Math.random() * 2, radius, 0, 2*Math.PI, false );
+    ctx.closePath();
+    ctx.fillStyle = "#E93F37";
+    ctx.fill()
+  }
 
-    var g = svg.append("g");
+  ctx.restore();
+}
+
+const screenScale = window.devicePixelRatio || 1;
+const canvas = d3.select('body').append('canvas')
+  .attr( 'width', width * screenScale)
+  .attr( 'height', height * screenScale )
+  .style( 'width', `${width}px` )
+  .style( 'height', `${height}px` )
+
+canvas.node().getContext( '2d' ).scale( screenScale, screenScale );
+
+const ctx = canvas.node().getContext( '2d' );
+
+d3.json( "./cat.json", data => {
+
+  setInterval( draw, 50, data)
+
+});
