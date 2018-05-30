@@ -7,11 +7,11 @@ var width = 960,
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
-
+/*
 svg.append("rect")
     .attr("class", "background")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height);*/
 
 //to make groups
 var g = svg.append("g");
@@ -23,12 +23,14 @@ var colors = d3.scale.category10();
 d3.csv("./resources/artistsDB.csv", function (error, artists) {
     d3.json('./resources/omocat_logo_coordinator.json', function (error, logoCoords) {
 
+        artists.forEach(element => {
+            
+        });
         g.selectAll("circle").data(artists)
             .enter().append("circle")
             .attr("cx", (d, i) => logoCoords[i][0])
             .attr("cy", (d, i) => logoCoords[i][1] - 200)
             .attr("r", 2)
-
 
     });
 
