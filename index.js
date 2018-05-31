@@ -21,11 +21,8 @@ var colors = d3.scale.category10();
 
 //add database for viz
 d3.csv("./resources/artistsDB.csv", function (error, artists) {
-    d3.json('./resources/omocat_logo_coordinator.json', function (error, logoCoords) {
+    d3.json('./resources/omocat_fill_coordinator.json', function (error, logoCoords) {
 
-        artists.forEach(element => {
-            
-        });
         g.selectAll("circle").data(artists)
             .enter().append("circle")
             .attr("cx", (d, i) => logoCoords[i][0])
@@ -33,5 +30,4 @@ d3.csv("./resources/artistsDB.csv", function (error, artists) {
             .attr("r", 2)
 
     });
-
 });
