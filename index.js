@@ -4,7 +4,7 @@ var width = 960,
     active = d3.select(null);
 
 //append svg element to html body with height and width
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#viz").append("svg")
     .attr("width", width)
     .attr("height", height);
 /*
