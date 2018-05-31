@@ -1,5 +1,5 @@
 const width = 1400;
-const height = 500;
+const height = 1400;
 
 function draw( points ) {
 
