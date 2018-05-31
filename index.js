@@ -1,6 +1,6 @@
 //width and height define
 var width = 960,
-    height = 900,
+    height = 500,
     active = d3.select(null);
 
 //append svg element to html body with height and width
